@@ -18,7 +18,11 @@ func main() {
 
 	m := NewStringMessage("hey, listen...")
 
-	dispatcher.Subscribe(StringMessage{}.Desc(), echo)
+	id := dispatcher.Subscribe(StringMessage{}.Desc(), echo)
+
+	fmt.Println(id)
+
+	dispatcher.UnSubscribe(id)
 
 	dispatcher.Post(m)
 
